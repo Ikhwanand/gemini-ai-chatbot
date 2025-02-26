@@ -17,17 +17,18 @@ function Header({
   return (
     <div className="header">
       <div className="header-content">
-        <h1>
-          <FontAwesomeIcon icon={faRobot} />
-          Gemini AI
-          <FontAwesomeIcon icon={faBrain} />
-        </h1>
+        <div className="header-title">
+          <FontAwesomeIcon icon={faRobot} className="header-icon robot-icon" />
+          <h1>Gemini AI</h1>
+          <FontAwesomeIcon icon={faBrain} className="header-icon brain-icon" />
+        </div>
         <div className="header-toggles">
-          <div className="streaming-toggle">
+          <div className="streaming-toggle toggle-group">
             <span>Stream Response</span>
             <button 
               onClick={onToggleStreaming} 
               className="toggle-button"
+              aria-label="Toggle Streaming"
             >
               <FontAwesomeIcon 
                 icon={isStreaming ? faToggleOn : faToggleOff} 
@@ -36,14 +37,15 @@ function Header({
               />
             </button>
           </div>
-          <div className="websearch-toggle">
+          <div className="websearch-toggle toggle-group">
             <span>Web Search</span>
             <button 
               onClick={onToggleWebSearch} 
               className="toggle-button"
+              aria-label="Toggle Web Search"
             >
               <FontAwesomeIcon 
-                icon={isWebSearch ? faSearch : faSearch} 
+                icon={faSearch} 
                 color={isWebSearch ? '#2ecc71' : 'gray'} 
                 size="2x" 
               />

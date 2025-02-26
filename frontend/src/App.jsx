@@ -16,12 +16,15 @@ function App() {
 
   const toggleStreaming = useCallback(async () => {
     try {
+      console.log('Attempting to toggle streaming:', !isStreaming);
       const response = await axios.post('http://localhost:9000/toggle-stream', { 
         streaming: !isStreaming 
       });
+      console.log('Toggle stream response:', response.data);
       setIsStreaming(response.data.streaming);
     } catch (error) {
       console.error('Error toggling streaming:', error);
+      alert(`Failed to toggle streaming: ${error.message}`);
     }
   }, [isStreaming]);
 
